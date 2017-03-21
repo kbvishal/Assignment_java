@@ -1,0 +1,42 @@
+public class FindMax {
+ 
+public static void main(String[] args){
+	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter the number");
+	
+	int n = sc.nextInt();
+	int[] arr = new int[32];
+	int i =0;
+	
+	while(n/10 != 0){
+		arr[i] = n%10;
+		n = n/10;
+		i++;
+	}
+	arr[i] = n%10;
+	System.out.println(i);
+	
+	for(int k = 0;k<=i;k++)
+		System.out.print(arr[k]+" ");
+	
+	System.out.println();
+	
+	for(int j = 0; j<=i;j++){
+		 if(j >= (i - j)){
+			 System.out.println("The given no is pallindrome");
+			 return;
+		 }
+		 
+		 if(arr[j] == arr[i-j])
+			    continue;
+		 else{
+			 System.out.println("The givn no is not pallindrome");
+			 return;
+		 }
+	}
+	
+
+}
+
+}

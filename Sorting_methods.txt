@@ -1,0 +1,172 @@
+public static void bubbleSort(int a[]){
+	
+	for(int i = 0; i<(a.length-1);i++){
+		for(int j = 1; j<a.length;j++){
+			if(a[j-1] > a[j]){
+				int temp = a[j];
+				a[j] = a[j-1];
+				a[j-1] = temp;
+			}
+		}
+	}
+	
+	System.out.println("The sorted list is: ");
+	
+	for(int i = 0; i<a.length;i++)
+		System.out.print(a[i] + " ");
+}
+
+
+
+time complexity = (best,worst,average)O(n2)
+space complexity = O(1)
+
+
+-->Can be enhanced using flag
+  best case = O(n)
+inplace sort
+==========================================================
+public static void selection(int[] a){
+	if(a.length == 0)
+		return;
+	
+	for(int i = 0 ; i<(a.length-1);i++){
+		int min = i;
+		for(int j = i+1;j<a.length;j++){
+			if(a[j] < a[min])
+				 min = j;
+		}
+		
+		int temp = a[min];
+		a[min] = a[i];
+		a[i] = temp;
+	}
+	
+System.out.println("The sorted list is: ");
+	
+	for(int i = 0; i<a.length;i++)
+		System.out.print(a[i] + " ");
+}
+
+
+time complexity = best,worst,average-->O(n)
+space complexity = O(1)
+inplace sort
+===========================================================
+public static void insertion(int[] a){
+	
+	for(int i = 1; i<a.length;i++){
+		
+		int j = i,temp = a[i];
+		
+		while(j > 0 && temp < a[j-1]){
+			a[j] = a[j-1];
+			j--;
+		}
+		
+		if(j != i)
+			a[j] = temp;
+	}
+	
+System.out.println("The sorted list is: ");
+	
+	for(int i = 0; i<a.length;i++)
+		System.out.print(a[i] + " ");
+}
+
+Time complexity = O(n2)
+space complexity = O(1)
+inplace sort
+===========================================================
+public static void mergeSort(int[] a,int[] temp,int left,int right){
+	
+	if(left<right){
+		int mid = (left+right)/2;
+		mergeSort(a,temp,left,mid);
+		mergeSort(a,temp,mid+1,right);
+		merge(a,temp,left,mid,right);
+		
+	}
+		
+}
+
+
+public static void merge(int[] a,int[] temp,int left,int mid,int right){
+	
+	
+	int i = left,j = mid+1,k = left,left_end = mid,right_end = right;
+	
+	while(i<=left_end && j<=right_end){
+		if(a[i] < a[j]){
+			temp[k] = a[i];
+			i++;
+			k++;
+		}
+		else{
+			temp[k] = a[j];
+			j++;
+			k++;
+		}
+	}
+	
+	while(i <= left_end){
+		temp[k] = a[i];
+		i++;
+		k++;
+	}
+	
+	while(j <= right_end){
+		temp[k] = a[j];
+		j++;
+		k++;
+	}
+	
+	for(int x = left;x<=right;x++)
+		a[x] = temp[x];
+}
+
+Time Complexity : O(nlogn)
+space complexity : O(n)
+Time efficient
+===========================================================
+
+public static void quickSort(int[] a,int left,int right){
+
+              if(right == 0)
+		return;
+	
+	int pivot = a[right];
+	int j = left;
+	
+	if(left < right){
+		for(int i = left;i<=right-1;i++){
+			if(a[i] < pivot){
+				int temp = a[j];
+				a[j] = a[i];
+				a[i] = temp;
+				j++;
+			}
+		}
+		
+		int temp = a[right];
+		a[right] = a[j];
+		a[j] = temp;
+		
+		
+		if(j == left){
+		quickSort(a,j+1,right);
+		}
+		else if(j == right){
+			quickSort(a,left,j-1);
+		}
+		else{
+			quickSort(a,j+1,right);
+			quickSort(a,left,j-1);
+		}
+		
+	}
+}
+
+time complexity : O(nlogn)
+space complexity : O(1)
+very efficient average case

@@ -1,0 +1,56 @@
+public static void main(String[] args){
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the string");
+		
+		String s = sc.next();
+		char[] c = s.toCharArray();
+		String[] exp = new String[s.length()-1];
+		
+		int i = 0;
+		
+		while(c[i] != '.')
+		       i++;
+		
+
+		int y = 0;
+		
+		for(int j = 0; j< i;j++){
+			
+			String ss = ""+c[j];
+			if(c[j] != '0'){
+		    for(int k = 1; k<(i-j) ;k++) 
+		    	ss = ss+'0';
+			
+		    exp[y++] = ss;
+			}
+		}
+		
+		i++; 
+		
+		for(int j = i; j < c.length;j++){
+			String ss = "."; 
+			
+			if(c[j] != '0'){ 
+			for(int k = 1; k<=(j-i);k++)
+				ss = ss + '0';
+			ss = ss + c[j];
+			
+		    exp[y++] = ss;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		for(int x = 0; x<exp.length;x++){
+			
+			
+			System.out.print(exp[x]+" ");
+		}
+		
+		//return result;
+	}

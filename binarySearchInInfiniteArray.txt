@@ -1,0 +1,51 @@
+public static void main(String[] args){
+	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter the size of the array");
+	int size = sc.nextInt();
+	
+	int[] arr = new int[size];
+	System.out.println("Enter the items");
+	for(int i = 0; i<size;i++){
+		arr[i] = sc.nextInt();
+	}
+	
+	infiniteSearch(arr,6);
+	
+	
+}
+
+public static void binarySearch(int[] a,int l,int u,int key){
+	
+	if(u >= l){
+		int mid = l + ((u-l)/2);
+		if(a[mid] == key){
+			System.out.println("key found at position "+mid);
+			return;
+		}
+			
+		else if(a[mid] < key)
+			binarySearch(a,mid+1,u,key);
+		else
+		     binarySearch(a,l,mid-1,key);
+		
+	}
+	else{
+		System.out.println("key is not found");
+		return;
+	}
+				
+}
+
+public static void infiniteSearch(int[] a,int key){
+	int l = 0;
+	int h = 1;
+	
+	while(a[h] < key){
+		l = h;
+		h = h*2;		
+	}
+	
+	binarySearch(a,l,h,key);
+    
+}

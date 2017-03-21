@@ -1,0 +1,22 @@
+preorder traversal with stack
+=====================
+public static void preorder(bnode root){
+	if(root == null)
+		return;
+	Stack<bnode> S = new Stack<bnode>();
+	
+	
+	S.push(root);
+	
+	while(S.isEmpty() == false){
+		
+		bnode temp = S.pop();
+		System.out.print(temp.data+" ");
+		
+		if(temp.isRight())
+			S.push(temp.right);
+		if(temp.isLeft())
+			S.push(temp.left);
+	}
+	
+ }

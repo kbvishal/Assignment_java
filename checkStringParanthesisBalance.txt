@@ -1,0 +1,46 @@
+1.Paranthesis
+===================
+public static void main(String[] args){
+	
+	Scanner sc = new Scanner(System.in);
+	
+	System.out.println("Enter the string");
+	String s = sc.nextLine();
+	char[] ch = s.toCharArray();
+	char[] temp = new char[s.length()];
+	int top = -1;
+	int i = 0;
+	
+	while(i < s.length()){
+		
+		if(ch[i] == '('){
+			temp[++top] = ch[i];
+			i++;
+		}
+		else{
+			if(top == -1){
+				System.out.println("String is not balanced");
+				return;
+			}
+				
+			else if(temp[top] == '('){
+				top--;
+				i++;
+			}
+			else{
+				System.out.println("String is not balanced");
+				return;
+			}
+				
+		}
+			
+	}
+	
+	if(top == -1)
+		System.out.println("String is balanced");
+	else
+		System.out.println("String is not balanced");
+	
+}
+
+2.

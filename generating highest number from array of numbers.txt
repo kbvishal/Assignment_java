@@ -1,0 +1,33 @@
+public static void main(String[] args){
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int[] arr = {1,1,1};
+		
+		for(int i = 0; i< arr.length;i++){
+			  int max = i;
+			for(int j = i+1; j<arr.length;j++){
+				
+				if(compare(arr[max],arr[j]) != arr[max])
+					max = j;
+				
+			}
+			
+			if(max != i){
+			int temp = arr[i];
+			arr[i] = arr[max];
+			arr[max] = temp;
+			}
+		}
+		
+		for(int x = 0;x<arr.length;x++)
+			System.out.print(arr[x]+" ");
+	}
+	
+	public static int compare(int a,int b){
+		
+		int x = Integer.parseInt(Integer.toString(a) + Integer.toString(b));
+		int y = Integer.parseInt(Integer.toString(b) + Integer.toString(a));
+		
+		return (x>y)?a:b;
+	}

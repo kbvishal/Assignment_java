@@ -1,0 +1,25 @@
+Fibbonaci without memoization
+-----------------------------------------
+public static int fibn(int n){
+	if(n == 0 || n == 1)
+		return 1;
+	return fibn(n-1)+fibn(n-2);
+}
+
+
+Fibbonaci with memoization
+-----------------------------------------
+static int n = 6;
+static int[] fib = new int[n+1];
+
+public static int fibbn(int n){
+	
+	if(n == 0 || n == 1)
+		return 1;
+	fib[0] = 1;
+	fib[1] = 1;
+	
+	if(fib[n] != 0)
+		return fib[n];
+	return fibbn(n-1)+fibbn(n-2);
+}

@@ -1,0 +1,84 @@
+public static void main(String[] args){
+	
+	
+	List list1 = new List();
+	List list2 = new List();
+	
+	node n1 = new node(1);
+	node n2 = new node(2);
+	node n3 = new node(3);
+	node n4 = new node(4);
+	node n5 = new node(5);
+	node n6 = new node(6);
+	node n7 = new node(7);
+	node n8 = new node(8);
+	
+    list1.add(n1);
+    list1.add(n2);
+    list1.add(n3);
+    list1.add(n4);
+    list1.add(n5);
+    list1.add(n6);
+    
+    System.out.println("Element in list 1 is : "+list1.count());
+    
+    list2.add(n7);
+    System.out.println("Element in list 1 is : "+list1.count());
+    list2.add(n8);
+    list2.add(n4);
+    System.out.println("Element in list 1 is : "+list1.count());
+    //list2.add(n5);
+    System.out.println("Element in list 1 is : "+list1.count());
+    //list2.add(n6);
+    System.out.println("Element in list 1 is : "+list1.count());
+    System.out.println("Element in list 2 is : "+list2.count());
+	list1.display();
+	list2.display();
+	//reverse(list);
+	//System.out.println("THe reverse list is :");
+	//list.display();
+	
+	int a = intersection(list1,list2);
+	
+	System.out.println("list1 and list2 intersect at position from list1 : "+a);
+}
+
+public static List reverse(List L){
+	if(L.getHead() == null){
+		System.out.println("list is empty");		
+		return L;
+	}
+	node temp,prv = null;
+	node nxt = L.getHead();
+	
+	while(nxt.hasNext()){
+		temp = prv;
+		prv = nxt;
+		nxt = prv.getNext();
+		prv.next = temp;
+	}
+	nxt.next = prv;
+	L.setHead(nxt);
+	return L;
+	
+	
+}
+
+public static int intersection(List L1,List L2){
+
+	int m,n,p,a1,b1,c1;
+	
+	m = L1.count();
+	n = L2.count();
+	
+	List L3 = reverse(L2);
+	
+	p = L1.count();
+	
+	int diff = m-n;
+	int mm = (p+diff)/2;
+	
+	
+	return mm+1;
+}
+}

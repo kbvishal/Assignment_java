@@ -1,0 +1,42 @@
+boundary level traversal of a binary tree
+==============================
+public static void boundaryTraversal(bnode root){
+	
+	if(root == null)
+		return;
+	bnode temp = root;
+	
+	Stack<bnode> s = new Stack<bnode>();
+	while(temp != null){
+		s.push(temp);
+		if(temp.left != null){
+			temp = temp.left;
+		}
+		else if(temp.right != null){
+			temp = temp.right;
+		}
+		else
+			break;
+	}
+	
+	while(s.peek() != root){
+		bnode t = s.pop();
+		System.out.print(t.data+" ");
+		}
+	
+	temp = root;
+	while(temp != null){
+		System.out.print(temp.data+" ");
+
+		if(temp.right != null){
+						temp = temp.right;
+		}
+		else if(temp.left != null){
+			temp = temp.left;
+		}
+		else 
+			return;
+	}
+	
+	
+}

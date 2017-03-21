@@ -1,0 +1,31 @@
+preorder with recursion
+----------------------------
+public static void preorder(bnode root){
+	 if(root == null)
+		 return;
+	 System.out.print(root.data+" ");
+	 preorder(root.left);
+	 preorder(root.right);
+ }
+
+Inorder with recursion
+------------------------------
+public static void inorder(bnode root){
+	 if(root == null)
+		 return;
+	 inorder(root.left);
+	 
+	 System.out.print(root.data+" ");
+	 
+	 inorder(root.right);
+ }
+
+post order with recursion
+--------------------------------
+public static void postorder(bnode root){
+	 if(root == null)
+		 return;
+	 postorder(root.left);
+	 postorder(root.right);
+                System.out.print(root.data+" ");
+ }

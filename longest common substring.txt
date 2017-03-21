@@ -1,0 +1,60 @@
+LCS without memoization
+-------------------------------------
+public static String lcs(String s1,String s2){
+	if(s1.length() == 0 || s2.length() == 0)
+		return "";
+	
+	else if(s1.charAt(0) == s2.charAt(0)){
+		return s1.charAt(0)+lcs(s1.substring(1),s2.substring(1));
+	}
+	else{
+	 String x = lcs(s1.substring(1),s2);
+	String y = lcs(s1,s2.substring(1));
+	return (x.length() >= y.length())?x:y;
+	}
+}
+
+==================================================
+With memoization
+--------------------------------
+public static String lcs(String s1,String s2){
+	
+	if(s1.length() == 0 || s2.length() == 0)
+		  return "";
+	String s = "";
+	int[][] t = new int[s1.length()+1][s2.length()+1];
+	
+	for(int i = 0; i<s1.length()+1;i++)
+		  t[i][0] = 0;
+	for(int j = 0; j<s2.length()+1;j++)
+		  t[0][j] = 0;
+	
+	for(int i = 1;i<s1.length()+1;i++){
+		for(int j = 1; j<s2.length()+1;j++){
+			if(s1.charAt(i-1) == s2.charAt(j-1)){
+				 t[i][j] = t[i-1][j-1]+1;
+				 
+			}
+			else
+				t[i][j] = Math.max(t[i-1][j], t[i][j-1]);
+		}
+	}
+	
+	int x = s1.length();
+	int y = s2.length();
+	
+	while(x > 0 && y > 0){
+		if(t[x][y] == t[x-1][y]){
+			x--;
+		}
+		else if(t[x][y] == t[x][y-1])
+			y--;
+		else{
+			
+			s = s1.charAt(x-1) + s;
+			x--;
+			y--;
+		}
+	}
+	return s;
+}

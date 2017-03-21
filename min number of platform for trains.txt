@@ -1,0 +1,30 @@
+int[] arv = {540,580,590,660,900,1080};
+		int[] dep = {550,720,680,690,1140,1200};
+		
+		
+		int i = 1,finalMax = 1,depMax = dep[0];
+		
+		while(i < arv.length){
+			
+			int max = 1;
+			
+			while(i < arv.length && arv[i] <= depMax){
+				max++;
+				
+				if(dep[i] > depMax)
+					depMax = dep[i];
+				i++;
+			}
+			
+			
+			if(i<(arv.length)){
+			depMax = dep[i];
+			
+			}
+			i++;
+			if(max>finalMax)
+				finalMax = max;
+		}
+		
+		System.out.println(finalMax);
+	}
